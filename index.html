@@ -296,21 +296,50 @@
             }
         }
 
+        /* improved mobile menu with overlay */
         .nav-links.mobile-open {
             display: flex !important;
             flex-direction: column;
-            position: absolute;
+            position: fixed;
             top: 75px;
             left: 0;
-            width: 100%;
+            width: 85%;
+            max-width: 320px;
+            height: calc(100vh - 75px);
             background: #111820;
             backdrop-filter: blur(16px);
-            padding: 2rem;
+            padding: 2rem 2rem;
             gap: 1.5rem;
-            border-bottom: 2px solid var(--primary);
+            border-right: 2px solid var(--primary);
             box-shadow: 0 30px 40px black;
-            z-index: 999;
+            z-index: 1000;
             align-items: flex-start;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* overlay when menu is open */
+        .nav-links.mobile-open::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* ----- HERO CAROUSEL ----- */
@@ -1263,7 +1292,7 @@
             border-color: var(--primary);
         }
 
-        /* ========== MOBILE OPTIMIZATION (ENHANCED) ========== */
+        /* ========== ENHANCED MOBILE OPTIMIZATION ========== */
         @media (max-width: 768px) {
             section {
                 padding: 3rem 0;
@@ -1329,11 +1358,26 @@
 
             .filter-bar {
                 gap: 0.5rem;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+
+            .filter-bar::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .filter-bar::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 10px;
             }
 
             .filter-btn {
                 padding: 0.5rem 1.2rem;
                 font-size: 0.85rem;
+                white-space: nowrap;
             }
 
             .reviews-section {
@@ -1473,18 +1517,19 @@
 
             .nav-links.mobile-open {
                 top: 65px;
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
             }
 
             .nav-links.mobile-open a {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                padding: 0.8rem 0;
+                width: 100%;
             }
 
             marquee {
                 font-size: 0.85rem;
             }
 
-            /* random LED image box in footer for mobile/desktop */
             .led-img-box {
                 margin-top: 1rem;
                 text-align: center;
@@ -1542,6 +1587,43 @@
 
             .map-container {
                 height: 180px;
+            }
+
+            /* extra small devices: stack product action buttons */
+            .product-actions {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .product-actions .details-btn,
+            .product-actions .enquire-btn {
+                width: 100%;
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* tiny screens */
+        @media (max-width: 360px) {
+            .carousel-content .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .navbar {
+                padding: 0.5rem 3%;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
             }
         }
 
