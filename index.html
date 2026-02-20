@@ -177,17 +177,6 @@
             transform: rotate(8deg) scale(1.05);
         }
 
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 800;
-            color: white;
-            line-height: 1;
-        }
-
-        .logo-text span {
-            color: var(--accent);
-            font-weight: 400;
-        }
 
         .nav-links {
             display: flex;
@@ -1507,9 +1496,6 @@
                 font-size: 1.6rem;
             }
 
-            .logo-text {
-                font-size: 1.6rem;
-            }
 
             .mobile-menu {
                 font-size: 1.8rem;
@@ -1538,9 +1524,6 @@
             .led-img-box img {
                 width: 200px;
                 height: 70px;
-                object-fit: cover;
-                border-radius: 30px;
-                border: 2px solid var(--primary);
             }
         }
 
@@ -1622,9 +1605,6 @@
                 padding: 0.5rem 3%;
             }
 
-            .logo-text {
-                font-size: 1.4rem;
-            }
         }
 
         /* random LED image box (also visible on desktop) */
@@ -1635,9 +1615,6 @@
         .led-img-box img {
             width: 200px;
             height: 70px;
-            object-fit: cover;
-            border-radius: 30px;
-            border: 2px solid var(--accent);
             transition: 0.3s;
         }
 
@@ -1657,8 +1634,7 @@
 
     <nav class="navbar">
         <div class="logo">
-            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-            <div class="logo-text">Valor<span>.</span></div>
+            <img src="../asset/valor-logo.svg" width="200px" height="70px" alt="LED light" loading="lazy">
         </div>
         <div class="nav-links" id="navLinks">
             <a href="#" data-page="home" class="active">Home</a>
@@ -1994,9 +1970,8 @@
                 <p><i class="fas fa-map-marker-alt"></i> H No 398, Bhiwandi, 421308</p>
                 <p><i class="fas fa-phone"></i> +91 7796999697</p>
                 <!-- random LED image box (200x70) – replace src with your asset -->
-                <div class="led-img-box">
-                    <img src="https://images.unsplash.com/photo-1565814636199-ae8133055c1c?w=200&h=70&fit=crop&auto=format"
-                        alt="LED light" loading="lazy">
+                <div class="logo">
+                    <img src="../asset/valor-logo.svg" width="200px" height="70px" alt="LED light" loading="lazy">
                 </div>
             </div>
             <div class="footer-col">
@@ -2184,7 +2159,7 @@
             const email = document.getElementById('newsletterEmail').value;
             if (email) { showToast('Subscribed! (demo)'); document.getElementById('newsletterEmail').value = ''; } else showToast('Enter email', '⚠️');
         });
-  
+
         // ================== LOADER ==================
         window.addEventListener('load', () => document.getElementById('loader').classList.add('hidden'));
     </script>
