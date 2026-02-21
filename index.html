@@ -512,7 +512,6 @@
             }
         }
 
-        /* ----- MOBILE CAROUSEL HEIGHT REDUCTION ----- */
         @media (max-width: 768px) {
             .hero-carousel {
                 height: 60vh;
@@ -1325,6 +1324,7 @@
             }
         }
 
+        /* MODAL (enhanced mobile responsiveness) */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -1334,12 +1334,13 @@
             display: none;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
         .modal-content {
             background: #111820;
             max-width: 750px;
-            width: 90%;
+            width: 100%;
             border-radius: 60px;
             padding: 2.5rem;
             border: 2px solid var(--primary);
@@ -1368,6 +1369,7 @@
             cursor: pointer;
             color: white;
             transition: 0.2s;
+            line-height: 1;
         }
 
         .modal-close:hover {
@@ -1428,6 +1430,50 @@
         .enquire-modal-btn:hover {
             background: #d68f36;
             transform: scale(1.02);
+        }
+
+        /* MOBILE MODAL fine-tuning */
+        @media (max-width: 600px) {
+            .modal-content {
+                padding: 1.5rem;
+                border-radius: 40px;
+            }
+
+            .modal-body {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-img {
+                flex: auto;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .modal-info h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .modal-info p {
+                font-size: 0.95rem;
+                margin: 0.4rem 0;
+            }
+
+            .modal-info .price-big {
+                font-size: 1.8rem;
+            }
+
+            .enquire-modal-btn {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+
+            .modal-close {
+                top: 12px;
+                right: 18px;
+                font-size: 2rem;
+            }
         }
 
         .toast {
@@ -1874,7 +1920,7 @@
         </div>
     </div>
 
-    <!-- REDESIGNED CONTACT PAGE -->
+    <!-- CONTACT PAGE (REDESIGNED) -->
     <div id="contact-page" class="page container">
         <h2 class="section-title">Illuminate your inbox</h2>
         <div class="contact-grid">
@@ -1891,7 +1937,6 @@
                     <p>Monday – Saturday: 9:00 AM – 7:00 PM</p>
                     <p>Sunday: Closed</p>
                 </div>
-                <!-- Google Map embed (free) -->
                 <div class="map-container-modern">
                     <iframe
                         src="https://www.google.com/maps?q=H+No+398,+Near+Lords+Club,+Savanda+Village,+Bhiwandi+421308&output=embed"
@@ -1994,8 +2039,16 @@
         // ================== UTILITIES ==================
         const toast = document.getElementById('toast');
         const toastMsg = document.getElementById('toastMsg');
-        function showToast(msg, icon = '✅') { toastMsg.innerText = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
-        function whatsAppEnquiry(productName) { window.open(`https://wa.me/917796999697?text=I'm%20interested%20in%20${encodeURIComponent(productName)}%20from%20Valor%20Technology`, '_blank'); }
+        function showToast(msg) { toastMsg.innerText = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+
+        // GENERATE DETAILED WHATSAPP MESSAGE
+        function generateWhatsAppMessage(product) {
+            return `Hi Valor Technology, I'm interested in *${product.name}* (Code: ${product.code}).\nSpecs: ${product.watts} · ${product.cct || '—'} · ${product.body} · Cutout: ${product.cutout || '—'}.\nPrice: ${product.price}. Please share more details & availability.`;
+        }
+        function whatsAppEnquiry(product) {
+            const msg = encodeURIComponent(generateWhatsAppMessage(product));
+            window.open(`https://wa.me/917796999697?text=${msg}`, '_blank');
+        }
 
         // ================== RENDER CARD ==================
         function renderProductCard(p, index) {
@@ -2008,7 +2061,7 @@
         function showProductModal(product) {
             modalBody.innerHTML = `<div class="modal-img"><img src="${product.img}" alt="${product.name}"></div><div class="modal-info"><h2>${product.name}</h2><p><strong>Code:</strong> ${product.code}</p><p><strong>Category:</strong> ${product.category}</p><p><strong>Wattage:</strong> ${product.watts}</p><p><strong>CCT:</strong> ${product.cct || '—'}</p><p><strong>Body:</strong> ${product.body}</p><p><strong>Cutout:</strong> ${product.cutout || '—'}</p><p class="price-big">${product.price}</p><button class="enquire-modal-btn" id="modalEnquireBtn"><i class="fab fa-whatsapp"></i> Enquire now</button></div>`;
             modalOverlay.style.display = 'flex';
-            document.getElementById('modalEnquireBtn').addEventListener('click', () => { whatsAppEnquiry(product.name); modalOverlay.style.display = 'none'; });
+            document.getElementById('modalEnquireBtn').addEventListener('click', () => { whatsAppEnquiry(product); modalOverlay.style.display = 'none'; });
         }
         document.getElementById('modalClose').addEventListener('click', () => modalOverlay.style.display = 'none');
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.style.display = 'none'; });
@@ -2021,7 +2074,7 @@
             });
             document.querySelectorAll('.enquire-btn').forEach(btn => {
                 btn.removeEventListener('click', window.enquireHandler);
-                window.enquireHandler = (e) => { const idx = e.currentTarget.dataset.index; whatsAppEnquiry(products[idx].name); };
+                window.enquireHandler = (e) => { const idx = e.currentTarget.dataset.index; whatsAppEnquiry(products[idx]); };
                 btn.addEventListener('click', window.enquireHandler);
             });
         }
@@ -2117,7 +2170,7 @@
         // ================== NEWSLETTER ==================
         document.getElementById('newsletterBtn').addEventListener('click', function () {
             const email = document.getElementById('newsletterEmail').value;
-            if (email) { showToast('Subscribed! (demo)'); document.getElementById('newsletterEmail').value = ''; } else showToast('Enter email', '⚠️');
+            if (email) { showToast('Subscribed! (demo)'); document.getElementById('newsletterEmail').value = ''; } else showToast('Enter email');
         });
 
         // ================== LOADER ==================
