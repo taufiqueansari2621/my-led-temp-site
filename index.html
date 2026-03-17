@@ -1108,7 +1108,7 @@
             }
         }
 
-        /* ----- FOOTER ----- */
+        /* ----- FOOTER (unchanged) ----- */
         .footer {
             background: #0a0f14;
             padding: 3rem 5% 1.5rem;
@@ -1260,7 +1260,7 @@
             }
         }
 
-        /* ----- MODAL, TOAST, LOADER, ETC ----- */
+        /* ----- MODAL, TOAST, LOADER ----- */
         .wa-float {
             position: fixed;
             bottom: 30px;
@@ -1498,7 +1498,7 @@
             }
         }
 
-        /* About page extras */
+        /* ========== ABOUT PAGE ENHANCED MOBILE ========== */
         .about-hero {
             display: flex;
             gap: 2.5rem;
@@ -1512,7 +1512,7 @@
         }
 
         .about-hero-text h2 {
-            font-size: 3rem;
+            font-size: clamp(2.2rem, 5vw, 3rem);
             line-height: 1.2;
         }
 
@@ -1583,13 +1583,97 @@
             border-color: var(--primary);
         }
 
+        /* ----- about page responsive tweaks ----- */
+        @media (max-width: 768px) {
+            .about-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-hero-text h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-hero-text p {
+                font-size: 1rem;
+            }
+
+            .about-hero-img img {
+                max-width: 90%;
+                margin: 0 auto;
+                border-radius: 40px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .value-item {
+                padding: 1.2rem;
+            }
+
+            .value-item i {
+                font-size: 2rem;
+            }
+
+            .value-item h4 {
+                font-size: 1.1rem;
+            }
+
+            /* mission/vision block */
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+
+            /* "Our Approach" grid (3 columns) */
+            .grid-4[style*="grid-template-columns:repeat(3,1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Industries we serve grid */
+            .grid-4 .why-card {
+                padding: 1.2rem;
+            }
+
+            /* blockquote */
+            div[style*="background: #1a2a2a; border-radius: 80px;"] {
+                border-radius: 40px !important;
+                padding: 1.5rem !important;
+            }
+
+            div[style*="background: #1a2a2a; border-radius: 80px;"] p {
+                font-size: 1.3rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-hero-img img {
+                border-radius: 30px;
+            }
+
+            .value-item {
+                padding: 1rem;
+            }
+        }
+
+        /* global mobile fine‑tuning */
         @media (max-width: 600px) {
             body {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .container {
-                padding: 0 4%;
+                padding: 0 5%;
             }
 
             section {
@@ -1597,19 +1681,31 @@
             }
 
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .btn {
                 padding: 0.6rem 1.4rem;
+                font-size: 0.9rem;
             }
 
-            .why-card {
+            .why-card,
+            .app-card {
                 padding: 1.2rem;
             }
 
             .product-img {
                 height: 140px;
+            }
+
+            .reviews-section {
+                border-radius: 40px;
+                padding: 2rem 1rem;
+            }
+
+            .review-slide {
+                padding: 1.5rem;
+                border-radius: 40px;
             }
         }
     </style>
@@ -1660,8 +1756,7 @@
                             class="btn btn-outline">Get Quote</a></div>
                 </div>
             </div>
-            <div class="carousel-slide"
-                style="background-image: url('./asset/SLEEK\ PANEL\ LIGHT.svg');">
+            <div class="carousel-slide" style="background-image: url('./asset/SLEEK\ PANEL\ LIGHT.svg');">
                 <div class="carousel-overlay"></div>
                 <div class="carousel-content">
                     <h1>Street · Flood · <span>Panel lights</span></h1>
@@ -1669,8 +1764,7 @@
                         class="btn btn-primary">Explore range</a>
                 </div>
             </div>
-            <div class="carousel-slide"
-                style="background-image: url('./asset/SMART\ FLOOD\ LIGHT.svg');">
+            <div class="carousel-slide" style="background-image: url('./asset/SMART\ FLOOD\ LIGHT.svg');">
                 <div class="carousel-overlay"></div>
                 <div class="carousel-content">
                     <h1>Multi‑color & <span>COB solutions</span></h1>
@@ -1727,12 +1821,8 @@
         <div class="container gallery-section">
             <h2 class="section-title">Illumination in frames</h2>
             <div class="gallery-grid">
-                <div class="gallery-item"><img
-                        src="./asset/SMART FLOOD LIGHT 2.svg"
-                        alt="LED spotlight"></div>
-                <div class="gallery-item"><img
-                        src="./asset/SMART FLOOD LIGHT.svg"
-                        alt="Downlight"></div>
+                <div class="gallery-item"><img src="./asset/SMART FLOOD LIGHT 2.svg" alt="LED spotlight"></div>
+                <div class="gallery-item"><img src="./asset/SMART FLOOD LIGHT.svg" alt="Downlight"></div>
                 <div class="gallery-item"><img
                         src="https://images.unsplash.com/photo-1576675784432-9e4b32b36e24?w=600&auto=format"
                         alt="Street light"></div>
@@ -1820,7 +1910,7 @@
         <div class="grid-4" id="productGrid"></div>
     </div>
 
-    <!-- ABOUT PAGE (fully customized with your content) -->
+    <!-- ABOUT PAGE (fully customized + beautiful mobile) -->
     <div id="about-page" class="page container">
         <section style="padding:4rem 0;">
             <div class="about-hero">
