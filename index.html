@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Valor Technology · precision LED lighting</title>
+    <base href="./">
     <meta name="description"
         content="Valor Technology – reliable LED lights for home, office & industry. BIS certified, 5‑year warranty. B2B supplier Bhiwandi.">
     <meta name="keywords"
@@ -142,7 +143,16 @@
             transform: translateY(-3px) scale(1.02);
         }
 
-        .btn, .details-btn, .enquire-btn, .enquire-modal-btn, .newsletter button, .contact-form-modern button, .download-cat, #productDetailBackUiBtn, #productPrevBtn, #productNextBtn {
+        .btn,
+        .details-btn,
+        .enquire-btn,
+        .enquire-modal-btn,
+        .newsletter button,
+        .contact-form-modern button,
+        .download-cat,
+        #productDetailBackUiBtn,
+        #productPrevBtn,
+        #productNextBtn {
             box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.6);
         }
 
@@ -453,6 +463,19 @@
             min-width: 170px;
         }
 
+        .cta-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .cta-panel .btn {
+            min-width: 180px;
+        }
+
         .carousel-indicators {
             position: absolute;
             bottom: 30px;
@@ -547,8 +570,15 @@
                 justify-content: flex-start;
             }
 
-            .hero-btns .btn {
+            .hero-btns .btn,
+            .cta-panel .btn {
                 flex: 1 1 100%;
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .cta-panel {
+                padding: 3rem 1.5rem;
             }
         }
 
@@ -713,6 +743,7 @@
             box-shadow: var(--shadow-lg);
             display: flex;
             flex-direction: column;
+            min-height: 100%;
         }
 
         .product-card:hover {
@@ -734,6 +765,8 @@
             border-radius: 30px;
             display: block;
             height: auto;
+            max-height: 520px;
+            object-fit: contain;
         }
 
         .product-detail-info h2 {
@@ -773,7 +806,7 @@
 
         .product-img {
             width: 100%;
-            height: 180px;
+            height: 260px;
             overflow: hidden;
             background: #1d2a2a;
             cursor: pointer;
@@ -919,6 +952,8 @@
             max-width: 900px;
             margin: 0 auto;
             position: relative;
+            display: flex;
+            justify-content: center;
         }
 
         .review-slide {
@@ -927,6 +962,9 @@
             border-radius: 60px;
             padding: 2.5rem;
             box-shadow: 0 25px 35px -15px black;
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .review-slide.active-review {
@@ -1836,17 +1874,21 @@
         <div class="logo"><img src="./asset/valor-logo.svg" width="200px" height="70px" alt="Valor" loading="lazy">
         </div>
         <div class="nav-links" id="navLinks">
-            <a href="#" data-page="home" class="active">Home</a>
-            <a href="#" data-page="products">Products</a>
-            <a href="#" data-page="about">About</a>
-            <a href="#" data-page="applications">Applications</a>
-            <a href="#" data-page="contact">Contact</a>
-            <a href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf" class="download-cat" id="downloadCatalogueNav"><i class="fas fa-download"></i> Catalogue</a>
+            <a href="/home" data-page="home" class="active">Home</a>
+            <a href="/products" data-page="products">Products</a>
+            <a href="/about" data-page="about">About</a>
+            <a href="/applications" data-page="applications">Applications</a>
+            <a href="/contact" data-page="contact">Contact</a>
+            <a href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf" class="download-cat"
+                id="downloadCatalogueNav"><i class="fas fa-download"></i> Catalogue</a>
         </div>
         <div class="header-contact">
             <a href="tel:+917796999697"><i class="fas fa-phone-alt"></i></a>
-            <a href="mailto:sales@valorindia.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://wa.me/917796999697" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i>
+            <a
+                href="mailto:sales@valorindia.com?subject=Website%20Enquiry&body=Hello%20Valor%20Technology%2C%20I%20have%20a%20question%20about%20your%20LED%20lighting%20solutions.%20Please%20send%20more%20details."><i
+                    class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/917796999697?text=Hello%20Valor%20Technology%2C%20I%20am%20interested%20in%20your%20LED%20lighting%20solutions.%20Please%20share%20more%20details."
+                class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i>
                 Enquiry</a>
         </div>
         <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars" id="menuIcon"></i></div>
@@ -1864,8 +1906,8 @@
                     <h1>Lighting Every Space with <span>Precision & Power</span></h1>
                     <p>Energy‑efficient, durable, modern LED solutions for home, business, and industry. 5‑year
                         warranty, pan‑India delivery.</p>
-                    <div class="hero-btns"><a href="#" data-page="products" class="btn btn-primary">View Products <i
-                                class="fas fa-arrow-right"></i></a><a href="#" data-page="contact"
+                    <div class="hero-btns"><a href="/products" data-page="products" class="btn btn-primary">View
+                            Products <i class="fas fa-arrow-right"></i></a><a href="/contact" data-page="contact"
                             class="btn btn-outline">Get Quote</a></div>
                 </div>
             </div>
@@ -1873,7 +1915,7 @@
                 <div class="carousel-overlay"></div>
                 <div class="carousel-content">
                     <h1>Street · Flood · <span>Panel lights</span></h1>
-                    <p>IP65, 6500K, 200W+, energy efficient.</p><a href="#" data-page="products"
+                    <p>IP65, 6500K, 200W+, energy efficient.</p><a href="/products" data-page="products"
                         class="btn btn-primary">Explore range</a>
                 </div>
             </div>
@@ -1881,7 +1923,7 @@
                 <div class="carousel-overlay"></div>
                 <div class="carousel-content">
                     <h1>Multi‑color & <span>COB solutions</span></h1>
-                    <p>RGB panels · Track lights · Deep downlights.</p><a href="#" data-page="products"
+                    <p>RGB panels · Track lights · Deep downlights.</p><a href="/products" data-page="products"
                         class="btn btn-primary">Discover</a>
                 </div>
             </div>
@@ -2005,12 +2047,12 @@
                 </div>
             </div>
         </div>
-        <div class="container"
+        <div class="container cta-panel"
             style="text-align:center; background: #111820; border-radius: 100px; padding: 4rem 2rem; margin: 5rem auto;">
             <h2 style="font-size:clamp(2rem,5vw,3rem);">Upgrade your lighting with Valor Technology today</h2>
-            <a href="#" data-page="contact" class="btn btn-primary" style="margin-top:2rem;">Get a quote</a>
-            <a href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf" id="downloadCtaHome" class="btn btn-outline" style="margin-left:1rem;"><i
-                    class="fas fa-download"></i> Download catalogue</a>
+            <a href="/contact" data-page="contact" class="btn btn-primary" style="margin-top:2rem;">Get a quote</a>
+            <a href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf" id="downloadCtaHome"
+                class="btn btn-outline" style="margin-top:2rem;"><i class="fas fa-download"></i> Download catalogue</a>
         </div>
     </div>
 
@@ -2035,7 +2077,8 @@
         <h2 class="section-title">FAQs</h2>
         <div class="why-card" style="text-align:left;">
             <h3>Frequently Asked Questions</h3>
-            <p>Find answers about orders, installation, shipping, and product support. Each page link opens a working route for smooth navigation.</p>
+            <p>Find answers about orders, installation, shipping, and product support. Each page link opens a working
+                route for smooth navigation.</p>
             <ul style="margin-top:1rem; color:#b8d7d2; list-style: inside disc;">
                 <li>How do I request a quote? Use the Contact section.</li>
                 <li>How can I download the catalogue? Use any Download Catalogue button.</li>
@@ -2047,39 +2090,55 @@
         <h2 class="section-title">Warranty Policy</h2>
         <div class="why-card" style="text-align:left;">
             <h3>Warranty and Support</h3>
-            <p>Valor Technology products include a standard warranty covering manufacturing defects and performance issues. The warranty is valid from the date of purchase and applies to faults arising from normal use.</p>
+            <p>Valor Technology products include a standard warranty covering manufacturing defects and performance
+                issues. The warranty is valid from the date of purchase and applies to faults arising from normal use.
+            </p>
             <ul style="margin-top:1rem; color:#b8d7d2; list-style: inside disc; padding-left: 1.2rem;">
                 <li>Covered: manufacturing defects, electrical failures, and premature product failure.</li>
-                <li>Not covered: damage from improper installation, physical abuse, water exposure beyond rating, or power surges.</li>
+                <li>Not covered: damage from improper installation, physical abuse, water exposure beyond rating, or
+                    power surges.</li>
                 <li>Keep the invoice and product details available for any warranty claim.</li>
             </ul>
-            <p style="margin-top:1rem;">To start a warranty claim, email <a href="mailto:sales@valorindia.com" style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a> or use the Contact page for fast support.</p>
+            <p style="margin-top:1rem;">To start a warranty claim, email <a
+                    href="mailto:sales@valorindia.com?subject=Warranty%20Claim%20Enquiry&body=Hello%20Valor%20Technology%2C%20I%20would%20like%20to%20start%20a%20warranty%20claim.%20Please%20let%20me%20know%20the%20next%20steps."
+                    style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a> or use the Contact page
+                for fast support.</p>
         </div>
     </div>
     <div id="privacy-page" class="page container">
         <h2 class="section-title">Privacy Policy</h2>
         <div class="why-card" style="text-align:left;">
             <h3>Your privacy matters</h3>
-            <p>We collect only the information required to respond to enquiries, process newsletter signups, and support our customers. Your contact details are used solely for communication about your request and are not sold to third parties.</p>
+            <p>We collect only the information required to respond to enquiries, process newsletter signups, and support
+                our customers. Your contact details are used solely for communication about your request and are not
+                sold to third parties.</p>
             <ul style="margin-top:1rem; color:#b8d7d2; list-style: inside disc; padding-left: 1.2rem;">
                 <li>We collect your name, email, phone number, and enquiry details when you contact us.</li>
                 <li>Your data is used only to reply to your enquiry or subscription request.</li>
                 <li>We keep your details only as long as needed to serve your request.</li>
             </ul>
-            <p style="margin-top:1rem;">If you have privacy questions, email us at <a href="mailto:sales@valorindia.com" style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a>.</p>
+            <p style="margin-top:1rem;">If you have privacy questions, email us at <a
+                    href="mailto:sales@valorindia.com?subject=Privacy%20Question&body=Hello%20Valor%20Technology%2C%20I%20have%20a%20question%20about%20your%20privacy%20policy.%20Please%20share%20details."
+                    style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a>.</p>
         </div>
     </div>
     <div id="terms-page" class="page container">
         <h2 class="section-title">Terms & Conditions</h2>
         <div class="why-card" style="text-align:left;">
             <h3>Terms of use</h3>
-            <p>Use of this website is subject to these terms. The content is provided for information only and does not form a binding agreement. Product listings, pricing, and availability may change without notice.</p>
+            <p>Use of this website is subject to these terms. The content is provided for information only and does not
+                form a binding agreement. Product listings, pricing, and availability may change without notice.</p>
             <ul style="margin-top:1rem; color:#b8d7d2; list-style: inside disc; padding-left: 1.2rem;">
-                <li>Enquiries sent through the site are handled by Valor Technology and may be used to contact you about products and services.</li>
-                <li>We do not guarantee that all product details or images are exact; please confirm specifications before ordering.</li>
+                <li>Enquiries sent through the site are handled by Valor Technology and may be used to contact you about
+                    products and services.</li>
+                <li>We do not guarantee that all product details or images are exact; please confirm specifications
+                    before ordering.</li>
                 <li>By using this site, you agree to receive replies related to your enquiry.</li>
             </ul>
-            <p style="margin-top:1rem;">If you need clarification, please contact us at <a href="mailto:sales@valorindia.com" style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a> or use the Contact page.</p>
+            <p style="margin-top:1rem;">If you need clarification, please contact us at <a
+                    href="mailto:sales@valorindia.com?subject=Clarification%20Request&body=Hello%20Valor%20Technology%2C%20I%20need%20clarification%20about%20your%20LED%20products%20and%20services.%20Please%20help."
+                    style="color:var(--accent); text-decoration:none;">sales@valorindia.com</a> or use the Contact page.
+            </p>
         </div>
     </div>
 
@@ -2089,17 +2148,24 @@
             <div class="about-hero">
                 <div class="about-hero-text">
                     <h2>Lighting excellence <span style="color:var(--accent);">built on trust</span></h2>
-                    <p style="font-size:1.2rem; margin:1.5rem 0;">Valor Technology is a premium LED lighting company focused on designing, manufacturing, and delivering high-performance lighting solutions for homes, offices, retail, and infrastructure projects. We combine modern product design with strong engineering discipline and real-world durability, so every solution performs reliably for years. Our products are built to reduce energy use, improve illumination, and support safer, smarter spaces.</p>
+                    <p style="font-size:1.2rem; margin:1.5rem 0;">Valor Technology is a premium LED lighting company
+                        focused on designing, manufacturing, and delivering high-performance lighting solutions for
+                        homes, offices, retail, and infrastructure projects. We combine modern product design with
+                        strong engineering discipline and real-world durability, so every solution performs reliably for
+                        years. Our products are built to reduce energy use, improve illumination, and support safer,
+                        smarter spaces.</p>
                     <ul style="list-style:none; padding-left:0; margin:1.5rem 0; display:grid; gap:0.8rem;">
                         <li><strong>Trusted reliability:</strong> every fixture passes strict quality checks.</li>
-                        <li><strong>Performance-first design:</strong> efficient light output with consistent color quality.</li>
-                        <li><strong>Scalable solutions:</strong> from single-room installs to large commercial projects.</li>
-                        <li><strong>Customer-first service:</strong> fast support, product guidance, and project help.</li>
+                        <li><strong>Performance-first design:</strong> efficient light output with consistent color
+                            quality.</li>
+                        <li><strong>Scalable solutions:</strong> from single-room installs to large commercial projects.
+                        </li>
+                        <li><strong>Customer-first service:</strong> fast support, product guidance, and project help.
+                        </li>
                     </ul>
                 </div>
-                <div class="about-hero-img"><img
-                        src="./asset/Office panel lights (800×400 px).jpg"
-                        alt="Valor lighting" loading="lazy"></div>
+                <div class="about-hero-img"><img src="./asset/Office panel lights (800×400 px).jpg" alt="Valor lighting"
+                        loading="lazy"></div>
             </div>
 
             <div class="grid-4">
@@ -2124,22 +2190,33 @@
             <div class="grid-4" style="margin:3rem 0; gap:2rem;">
                 <div class="why-card" style="text-align:left;">
                     <h3 style="color:var(--accent);"><i class="fas fa-bullseye"></i> Our Mission</h3>
-                    <p style="margin-top:1rem;">Empower customers with dependable LED lighting that saves energy, enhances comfort, and performs with minimal maintenance. We build products that deliver consistent brightness, efficient operation, and enduring value across every installation.</p>
+                    <p style="margin-top:1rem;">Empower customers with dependable LED lighting that saves energy,
+                        enhances comfort, and performs with minimal maintenance. We build products that deliver
+                        consistent brightness, efficient operation, and enduring value across every installation.</p>
                 </div>
                 <div class="why-card" style="text-align:left;">
                     <h3 style="color:var(--accent);"><i class="fas fa-eye"></i> Our Vision</h3>
-                    <p style="margin-top:1rem;">To lead the next wave of intelligent illumination in India by delivering trusted lighting solutions that make spaces safer, smarter, and more sustainable. We want Valor Lighting to be the first choice for customers who expect performance and reliability.</p>
+                    <p style="margin-top:1rem;">To lead the next wave of intelligent illumination in India by delivering
+                        trusted lighting solutions that make spaces safer, smarter, and more sustainable. We want Valor
+                        Lighting to be the first choice for customers who expect performance and reliability.</p>
                 </div>
             </div>
 
             <div style="display:grid; gap:2rem; margin-bottom:3rem;">
                 <div class="why-card" style="text-align:left;">
                     <h3 style="color:var(--accent);"><i class="fas fa-history"></i> Our Story</h3>
-                    <p style="margin-top:1rem;">Born from a passion for modern lighting, Valor Technology began with a simple goal: make dependable LED products available for all lighting applications. Over the years, we have grown by focusing on quality, improving our processes, and listening to customers. Today we serve residential, commercial, and industrial customers across multiple segments.</p>
+                    <p style="margin-top:1rem;">Born from a passion for modern lighting, Valor Technology began with a
+                        simple goal: make dependable LED products available for all lighting applications. Over the
+                        years, we have grown by focusing on quality, improving our processes, and listening to
+                        customers. Today we serve residential, commercial, and industrial customers across multiple
+                        segments.</p>
                 </div>
                 <div class="why-card" style="text-align:left;">
                     <h3 style="color:var(--accent);"><i class="fas fa-industry"></i> Manufacturing Excellence</h3>
-                    <p style="margin-top:1rem;">Our products are manufactured using high-grade components and tested against industry benchmarks. We maintain strict quality controls on every batch, and each fixture is engineered for long life, reliable performance, and ease of installation. This allows us to offer lighting systems that work dependably project after project.</p>
+                    <p style="margin-top:1rem;">Our products are manufactured using high-grade components and tested
+                        against industry benchmarks. We maintain strict quality controls on every batch, and each
+                        fixture is engineered for long life, reliable performance, and ease of installation. This allows
+                        us to offer lighting systems that work dependably project after project.</p>
                 </div>
             </div>
 
@@ -2184,7 +2261,8 @@
             </div>
 
             <div style="background: #1a2a2a; border-radius: 80px; padding: 2.5rem; text-align: center; margin: 3rem 0;">
-                <p style="font-size:1.8rem; font-weight:600; color:var(--accent);">Valor Technology is built around reliability, performance, and modern lighting solutions that help customers succeed.</p>
+                <p style="font-size:1.8rem; font-weight:600; color:var(--accent);">Valor Technology is built around
+                    reliability, performance, and modern lighting solutions that help customers succeed.</p>
             </div>
         </section>
     </div>
@@ -2193,43 +2271,35 @@
     <div id="applications-page" class="page container">
         <h2 class="section-title">Real‑world applications</h2>
         <div class="grid-4">
-            <div class="app-card"><img
-                    src="./asset/Office panel lights (800×400 px).jpg" alt="office lighting"
+            <div class="app-card"><img src="./asset/Office panel lights (800×400 px).jpg" alt="office lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Office lighting</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/Flood light wide shot (800×400 px).jpg" alt="retail showroom"
+            <div class="app-card"><img src="./asset/Flood light wide shot (800×400 px).jpg" alt="retail showroom"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Retail showrooms</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/Street light at dusk (400×400 px).jpg" alt="street lighting"
+            <div class="app-card"><img src="./asset/Street light at dusk (400×400 px).jpg" alt="street lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Street & outdoor</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/SMART FLOOD LIGHT 1.jpg" alt="stadium lighting"
+            <div class="app-card"><img src="./asset/SMART FLOOD LIGHT 1.jpg" alt="stadium lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Stadium lighting</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/Ceiling downlight (400×400 px).jpg" alt="home interior lighting"
+            <div class="app-card"><img src="./asset/Ceiling downlight (400×400 px).jpg" alt="home interior lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Home interiors</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/Flood light close-up (800×800 px).jpg" alt="industrial lighting"
+            <div class="app-card"><img src="./asset/Flood light close-up (800×800 px).jpg" alt="industrial lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Industrial warehouses</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/SLEEK 2.jpg" alt="modern panel lighting"
+            <div class="app-card"><img src="./asset/SLEEK 2.jpg" alt="modern panel lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Modern panel lighting</h3>
             </div>
-            <div class="app-card"><img
-                    src="./asset/SLEEK 3.jpg" alt="architectural lighting"
+            <div class="app-card"><img src="./asset/SLEEK 3.jpg" alt="architectural lighting"
                     style="width:100%; height:200px; object-fit:cover; border-radius:30px;">
                 <h3>Architectural lighting</h3>
             </div>
@@ -2270,14 +2340,15 @@
             <div class="contact-right">
                 <form class="contact-form-modern" id="contactForm">
                     <h3>Send a message</h3>
-                    <div class="input-group"><i class="fas fa-user"></i><input id="contactName" name="name" type="text" placeholder="Your full name"
-                            required></div>
-                    <div class="input-group"><i class="fas fa-envelope"></i><input id="contactEmail" name="email" type="email"
-                            placeholder="Email address" required></div>
-                    <div class="input-group"><i class="fas fa-phone-alt"></i><input id="contactPhone" name="phone" type="tel"
-                            placeholder="Phone number"></div>
-                    <div class="input-group"><i class="fas fa-pen" style="top:25px; transform:none;"></i><textarea id="contactMessage" name="message"
-                            rows="4" placeholder="Tell us about your lighting needs..."></textarea></div>
+                    <div class="input-group"><i class="fas fa-user"></i><input id="contactName" name="name" type="text"
+                            placeholder="Your full name" required></div>
+                    <div class="input-group"><i class="fas fa-envelope"></i><input id="contactEmail" name="email"
+                            type="email" placeholder="Email address" required></div>
+                    <div class="input-group"><i class="fas fa-phone-alt"></i><input id="contactPhone" name="phone"
+                            type="tel" placeholder="Phone number"></div>
+                    <div class="input-group"><i class="fas fa-pen" style="top:25px; transform:none;"></i><textarea
+                            id="contactMessage" name="message" rows="4"
+                            placeholder="Tell us about your lighting needs..."></textarea></div>
                     <button type="submit"><i class="fas fa-paper-plane"></i> Send enquiry</button>
                 </form>
             </div>
@@ -2297,17 +2368,22 @@
                 <p><i class="fas fa-phone"></i> +91 7796999697</p>
             </div>
             <div class="footer-col">
-                <h4>Products</h4><a href="#" data-page="products">Deep Downlight</a><a href="#" data-page="products">COB
-                    Spotlights</a><a href="#" data-page="products">LED Panels</a><a href="#" data-page="products">Street
+                <h4>Products</h4><a href="/products" data-page="products">Deep Downlight</a><a href="/products"
+                    data-page="products">COB
+                    Spotlights</a><a href="/products" data-page="products">LED Panels</a><a href="/products"
+                    data-page="products">Street
                     Lights</a>
             </div>
             <div class="footer-col">
-                <h4>Support</h4><a href="#" data-page="faq">FAQs</a><a href="#" data-page="warranty">Warranty Policy</a><a href="#" data-page="contact">Contact Us</a><a href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf"
+                <h4>Support</h4><a href="/faq" data-page="faq">FAQs</a><a href="/warranty" data-page="warranty">Warranty
+                    Policy</a><a href="/contact" data-page="contact">Contact Us</a><a
+                    href="./asset/Valor Technology 2026 ..pdf" download="Valor Technology 2026.pdf"
                     id="downloadCatalogueFooter">Download Catalogue <i class="fas fa-download"></i></a>
             </div>
             <div class="footer-col">
-                <h4>Contact</h4><a href="#" data-page="contact">Get a Quote</a><a
-                    href="https://wa.me/917796999697">WhatsApp</a>
+                <h4>Contact</h4><a href="/contact" data-page="contact">Get a Quote</a><a
+                    href="https://wa.me/917796999697?text=Hello%20Valor%20Technology%2C%20I%20would%20like%20to%20enquire%20about%20your%20LED%20products.%20Please%20share%20details."
+                    target="_blank">WhatsApp</a>
                 <div class="social-links">
                     <a href="https://facebook.com/profile.php?id=61587270050672" target="_blank"><i
                             class="fab fa-facebook-f"></i></a>
@@ -2320,14 +2396,16 @@
             </div>
             <div class="footer-col newsletter">
                 <h4>Newsletter</h4>
-                <p style="margin:0 0 0.8rem; color:#b8d7d2;">Subscribe for product updates and offers without leaving the page.</p>
+                <p style="margin:0 0 0.8rem; color:#b8d7d2;">Subscribe for product updates and offers without leaving
+                    the page.</p>
                 <input type="email" placeholder="Your email" id="newsletterEmail" aria-label="Newsletter email">
                 <button id="newsletterBtn">Subscribe</button>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Valor Technology · All rights reserved. <a href="#" data-page="privacy" style="color:#8bb7b0;">Privacy</a> · <a
-                    href="#" data-page="terms" style="color:#8bb7b0;">Terms</a></p>
+            <p>© 2026 Valor Technology · All rights reserved. <a href="/privacy" data-page="privacy"
+                    style="color:#8bb7b0;">Privacy</a> · <a href="/terms" data-page="terms"
+                    style="color:#8bb7b0;">Terms</a></p>
             <p>LED lights India · Downlight LED · COB spotlight</p>
         </div>
     </footer>
@@ -2338,7 +2416,8 @@
             <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
-    <a href="https://wa.me/917796999697" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/917796999697?text=Hello%20Valor%20Technology%2C%20I%20would%20like%20to%20know%20more%20about%20your%20LED%20lighting%20range.%20Please%20send%20details."
+        class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
         // ================== PRODUCT DATA ==================
@@ -2742,10 +2821,24 @@
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === activeRoute));
         }
 
-        function parseRouteFromHash() {
+        const routeNames = ['home', 'products', 'about', 'applications', 'contact', 'faq', 'warranty', 'privacy', 'terms'];
+
+        function getRouteFromPathname() {
+            const path = window.location.pathname.replace(/\/$/, '');
+            const segments = path.split('/').filter(Boolean);
+            if (!segments.length) return '';
+            const last = segments[segments.length - 1];
+            const secondLast = segments.length > 1 ? segments[segments.length - 2] : '';
+            if (routeNames.includes(last)) return last;
+            if (secondLast === 'product' && /^\d+$/.test(last)) return `product/${last}`;
+            return '';
+        }
+
+        function parseRouteFromUrl() {
             const hash = window.location.hash.slice(1);
-            if (!hash) return { page: 'home' };
-            const productMatch = hash.match(/^product[-\/](.+)$/);
+            const route = hash || getRouteFromPathname();
+            if (!route) return { page: 'home' };
+            const productMatch = route.match(/^product[-\/](.+)$/);
             if (productMatch) {
                 const token = productMatch[1];
                 if (/^\d+$/.test(token)) {
@@ -2753,7 +2846,7 @@
                 }
                 return { page: 'product', productCode: token };
             }
-            if (pages.includes(hash)) return { page: hash };
+            if (routeNames.includes(route)) return { page: route };
             return { page: 'home' };
         }
 
@@ -2788,15 +2881,25 @@
                 </div>`;
         }
 
+        function getRoutePath(state) {
+            if (!state || !state.page) return '/home';
+            if (state.page === 'product') {
+                const index = getProductIndexFromState(state);
+                return `/product/${index + 1}`;
+            }
+            return `/${state.page}`;
+        }
+
         function showRoute(page, replace = false) {
             const target = routeConfig[page] || routeConfig.home;
             hideAllPages();
             document.getElementById(target).classList.add('active-page');
             setActiveNav(page);
+            const routeUrl = getRoutePath({ page });
             if (replace) {
-                history.replaceState({ page }, '', `#${page}`);
+                history.replaceState({ page }, '', routeUrl);
             } else {
-                history.pushState({ page }, '', `#${page}`);
+                history.pushState({ page }, '', routeUrl);
             }
             window.scrollTo(0, 0);
         }
@@ -2839,16 +2942,17 @@
                 nextBtn.addEventListener('click', () => navigateToState({ page: 'product', productIndex: productIndex + 1 }, false));
             }
             const urlIndex = productIndex + 1;
+            const routeUrl = `/product/${urlIndex}`;
             if (replace) {
-                history.replaceState({ page: 'product', productIndex }, '', `#product/${urlIndex}`);
+                history.replaceState({ page: 'product', productIndex }, '', routeUrl);
             } else {
-                history.pushState({ page: 'product', productIndex }, '', `#product/${urlIndex}`);
+                history.pushState({ page: 'product', productIndex }, '', routeUrl);
             }
             window.scrollTo(0, 0);
         }
 
         function navigateToState(state, replace = false) {
-            const resolved = state || parseRouteFromHash();
+            const resolved = state || parseRouteFromUrl();
             if (replace) {
                 if (appHistory.length) {
                     appHistory[appHistory.length - 1] = resolved;
@@ -2879,11 +2983,11 @@
         pageBackBtn.addEventListener('click', handlePageBack);
 
         window.addEventListener('popstate', event => {
-            const state = event.state || parseRouteFromHash();
+            const state = event.state || parseRouteFromUrl();
             navigateToState(state, true);
         });
 
-        const initialRoute = window.history.state || parseRouteFromHash();
+        const initialRoute = window.history.state || parseRouteFromUrl();
         navigateToState(initialRoute, true);
 
         // ================== MOBILE MENU TOGGLE ==================
