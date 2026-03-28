@@ -109,6 +109,13 @@
             letter-spacing: 0.3px;
         }
 
+        .btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .btn-primary {
             background: var(--accent);
             color: white;
@@ -679,11 +686,62 @@
             box-shadow: var(--shadow-hover), 0 0 0 2px var(--primary), 0 0 30px #1d9192;
         }
 
+        .product-detail-card {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+
+        .product-detail-card img {
+            width: 100%;
+            border-radius: 30px;
+            display: block;
+            height: auto;
+        }
+
+        .product-detail-info h2 {
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+        }
+
+        .product-detail-desc {
+            color: #b8d7d2;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-detail-specs {
+            margin: 1.5rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .product-detail-spec {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.95rem;
+            color: #c7e3db;
+        }
+
+        .product-detail-spec strong {
+            color: #eef3f2;
+        }
+
+        @media (max-width: 900px) {
+            .product-detail-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .product-img {
             width: 100%;
             height: 180px;
             overflow: hidden;
             background: #1d2a2a;
+            cursor: pointer;
         }
 
         .product-img img {
@@ -1825,8 +1883,10 @@
                 <div class="gallery-item"><img src="./asset/Ceiling downlight (400×400 px).jpg" alt="Downlight"></div>
                 <div class="gallery-item"><img src="./asset/Street light at dusk (400×400 px).jpg" alt="Street light">
                 </div>
-                <div class="gallery-item"><img src="./asset/Flood light wide shot (800×400 px).jpg" alt="Panel light"></div>
-                <div class="gallery-item"><img src="./asset/Office panel lights (800×400 px).jpg" alt="Flood light"></div>
+                <div class="gallery-item"><img src="./asset/Flood light wide shot (800×400 px).jpg" alt="Panel light">
+                </div>
+                <div class="gallery-item"><img src="./asset/Office panel lights (800×400 px).jpg" alt="Flood light">
+                </div>
             </div>
         </div>
 
@@ -1903,6 +1963,15 @@
         <h2 class="section-title">All products</h2>
         <div class="filter-bar" id="filterBar"></div>
         <div class="grid-4" id="productGrid"></div>
+    </div>
+
+    <!-- PRODUCT DETAIL PAGE -->
+    <div id="product-detail-page" class="page container">
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:2rem;">
+            <button id="pageBackBtn" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to products</button>
+            <h2 class="section-title" style="margin:0;">Product details</h2>
+        </div>
+        <div id="productDetailContent"></div>
     </div>
 
     <!-- ABOUT PAGE (fully customized + beautiful mobile) -->
@@ -2190,27 +2259,302 @@
     <script>
         // ================== PRODUCT DATA ==================
         const products = [
-            { name: 'Titan Deep Downlight', category: 'Deep Downlight', watts: '12W/18W/24W', cutout: '90-120mm', price: '₹499', cct: '3000K/6500K', body: 'Black/White', code: 'VAL-DD12', img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&auto=format' },
-            { name: 'Round Deep Downlight', category: 'Deep Downlight', watts: '7W', cutout: '75mm', price: '₹399', cct: 'WW/CW', body: 'Black', code: 'VAL-DD07', img: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400&auto=format' },
-            { name: 'Orbit COB Lens 3W', category: 'COB Spotlights', watts: '3W', cutout: '50mm', price: '₹249', cct: '3000K', body: 'White', code: 'VAL-COB3', img: 'https://images.unsplash.com/photo-1565814636199-ae8133055c1c?w=400&auto=format' },
-            { name: 'Orbit COB Lens 6W', category: 'COB Spotlights', watts: '6W', cutout: '65mm', price: '₹349', cct: '4000K', body: 'Black', code: 'VAL-COB6', img: 'https://images.unsplash.com/photo-1576686586317-4a2bfd56b29d?w=400&auto=format' },
-            { name: 'Next Gen Model 1', category: 'COB Spotlights', watts: '7W', cutout: '70mm', price: '₹429', cct: 'WW', body: 'Matt Black', code: 'VAL-NG1', img: 'https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?w=400&auto=format' },
-            { name: 'Sleek Edgelit Panel', category: 'LED Panels', watts: '12W', cutout: '180x180', price: '₹899', cct: '6500K', body: 'White', code: 'VAL-P12', img: 'https://images.unsplash.com/photo-1587574299340-c9b3c0c9b6a0?w=400&auto=format' },
-            { name: '3-in-1 CCT Panel', category: 'LED Panels', watts: '15W', cutout: '200mm', price: '₹1199', cct: 'selectable', body: 'Silver', code: 'VAL-P15C', img: 'https://images.unsplash.com/photo-1576675784201-0e142b423d9b?w=400&auto=format' },
-            { name: 'Dynamic Street Light', category: 'Street Lights', watts: '50W', price: '₹2599', cct: '6500K', body: 'Grey', code: 'VAL-SL50', img: 'https://images.unsplash.com/photo-1576675784432-9e4b32b36e24?w=400&auto=format' },
-            { name: 'Sharp Street Light', category: 'Street Lights', watts: '100W', price: '₹4599', cct: '6500K', body: 'Grey', code: 'VAL-SL100', img: 'https://images.unsplash.com/photo-1605721912196-3e3455fe1602?w=400&auto=format' },
-            { name: 'Smart Flood Light 30W', category: 'Flood Lights', watts: '30W', price: '₹1499', cct: '6500K', body: 'Black', code: 'VAL-FL30', img: 'https://images.unsplash.com/photo-1576089172869-4f5f6f315620?w=400&auto=format' },
-            { name: 'Smart Flood Light 200W', category: 'Flood Lights', watts: '200W', price: '₹8499', cct: '6500K', body: 'Grey', code: 'VAL-FL200', img: 'https://images.unsplash.com/photo-1576675784432-9e4b32b36e24?w=400&auto=format' },
-            { name: 'Crysta Cylinder Spotlight', category: 'Track & Cylinder', watts: '12W', price: '₹699', cct: '3000K', body: 'Black/White', code: 'VAL-TR12', img: 'https://images.unsplash.com/photo-1565814636199-ae8133055c1c?w=400&auto=format' },
-            { name: 'Crystal Track Light', category: 'Track & Cylinder', watts: '20W', price: '₹999', cct: '4000K', body: 'White', code: 'VAL-TR20', img: 'https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?w=400&auto=format' },
-            { name: 'Prism RGB Panel', category: 'RGB Panels', watts: '7W+7W', cutout: '52mm', price: '₹1299', cct: 'RGB', body: 'White', code: 'VAL-RGB7', img: 'https://images.unsplash.com/photo-1576089172869-4f5f6f315620?w=400&auto=format' },
-            { name: 'Tricolor Conceal Panel', category: 'RGB Panels', watts: '6W+3W', price: '₹999', cct: '3 modes', body: 'Silver', code: 'VAL-RGB6', img: 'https://images.unsplash.com/photo-1565814636199-ae8133055c1c?w=400&auto=format' },
-            { name: 'Linear Batten 20W', category: 'Batten & Bulbs', watts: '20W', price: '₹399', cct: '6500K', body: 'White', code: 'VAL-BT20', img: 'https://images.unsplash.com/photo-1576686586317-4a2bfd56b29d?w=400&auto=format' },
-            { name: 'Aura Bulb 12W', category: 'Batten & Bulbs', watts: '12W', price: '₹179', cct: 'WW/CW', body: 'White', code: 'VAL-B12', img: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400&auto=format' },
-            { name: 'Hammer Bulb 30W', category: 'Batten & Bulbs', watts: '30W', price: '₹399', cct: 'Cool', body: 'Clear', code: 'VAL-HB30', img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&auto=format' },
-            { name: 'Emergency Bulb 9W', category: 'Batten & Bulbs', watts: '9W', price: '₹499', backup: '2hr', body: 'White', code: 'VAL-EM9', img: 'https://images.unsplash.com/photo-1576089172869-4f5f6f315620?w=400&auto=format' }
+            {
+                name: '6+3 Tricolor Conceal Panel',
+                category: 'RGB Panels',
+                watts: '6W+3W',
+                cutout: '—',
+                price: '₹899',
+                cct: 'Tricolor',
+                body: 'Silver',
+                code: 'VAL-RGB63',
+                img: './asset/product/6+3 TRICOLOR CONCEAL PANEL.jpg'
+            },
+            {
+                name: '7W Crysta Cylinder Spotlight',
+                category: 'COB Spotlights',
+                watts: '7W',
+                cutout: '70mm',
+                price: '₹449',
+                cct: '3000K',
+                body: 'Black',
+                code: 'VAL-CRY7',
+                img: './asset/product/7W CRYSTA CYLINDER SPOTLIGHT.jpg'
+            },
+            {
+                name: '7W Next Gen COB Spotlight M1',
+                category: 'COB Spotlights',
+                watts: '7W',
+                cutout: '70mm',
+                price: '₹429',
+                cct: 'WW',
+                body: 'Matt Black',
+                code: 'VAL-NG7M1',
+                img: './asset/product/7W NEXT GEN COB SPOTLIGHT M1.jpg'
+            },
+            {
+                name: '7W Next Gen COB Spotlight',
+                category: 'COB Spotlights',
+                watts: '7W',
+                cutout: '70mm',
+                price: '₹429',
+                cct: 'WW',
+                body: 'Black',
+                code: 'VAL-NG7',
+                img: './asset/product/7W NEXT GEN COB SPOTLIGHT.jpg'
+            },
+            {
+                name: '10W Crystal Track Light',
+                category: 'Track Lights',
+                watts: '10W',
+                cutout: '—',
+                price: '₹699',
+                cct: '4000K',
+                body: 'White',
+                code: 'VAL-CRY10',
+                img: './asset/product/10W CRYSTAL TRACK LIGHT.jpg'
+            },
+            {
+                name: '12+4 Tricolor Conceal Panel',
+                category: 'RGB Panels',
+                watts: '12W+4W',
+                cutout: '—',
+                price: '₹1199',
+                cct: '3 modes',
+                body: 'Silver',
+                code: 'VAL-RGB124',
+                img: './asset/product/12+4 TRICOLOR CONCEAL PANEL.png'
+            },
+            {
+                name: '12W Crysta Cylinder Spotlight',
+                category: 'COB Spotlights',
+                watts: '12W',
+                cutout: '90mm',
+                price: '₹599',
+                cct: '3000K',
+                body: 'Black/White',
+                code: 'VAL-CRY12',
+                img: './asset/product/12W CRYSTA CYLINDER SPOTLIGHT.jpg'
+            },
+            {
+                name: '12W Next Gen COB M2',
+                category: 'COB Spotlights',
+                watts: '12W',
+                cutout: '90mm',
+                price: '₹649',
+                cct: '3000K',
+                body: 'Black',
+                code: 'VAL-NG12M2',
+                img: './asset/product/12W NEXT GEN COB M2.jpg'
+            },
+            {
+                name: '12W Next Gen COB Spotlight M1',
+                category: 'COB Spotlights',
+                watts: '12W',
+                cutout: '90mm',
+                price: '₹629',
+                cct: 'WW',
+                body: 'Matt Black',
+                code: 'VAL-NG12M1',
+                img: './asset/product/12W NEXT GEN COB SPOTLIGHT M1.jpg'
+            },
+            {
+                name: '15W Vivid Backlit Panel Round',
+                category: 'LED Panels',
+                watts: '15W',
+                cutout: '200mm',
+                price: '₹999',
+                cct: 'Selectable',
+                body: 'White',
+                code: 'VAL-VIV15R',
+                img: './asset/product/15W VIVID BACKLIT PANEL RD.jpg'
+            },
+            {
+                name: '15W Vivid Backlit Panel Square',
+                category: 'LED Panels',
+                watts: '15W',
+                cutout: '200mm',
+                price: '₹999',
+                cct: 'Selectable',
+                body: 'White',
+                code: 'VAL-VIV15S',
+                img: './asset/product/15W VIVID BACKLIT PANEL SQ.jpg'
+            },
+            {
+                name: '18/22W Sleek Panel Round',
+                category: 'LED Panels',
+                watts: '18W/22W',
+                cutout: '200mm',
+                price: '₹1299',
+                cct: '6500K',
+                body: 'White',
+                code: 'VAL-SLEEKRD',
+                img: './asset/product/18&22W SLEEK PANEL RD.jpg'
+            },
+            {
+                name: '18/22W Sleek Panel Square',
+                category: 'LED Panels',
+                watts: '18W/22W',
+                cutout: '200mm',
+                price: '₹1299',
+                cct: '6500K',
+                body: 'White',
+                code: 'VAL-SLEEKSQ',
+                img: './asset/product/18&22W SLEEK PANEL SQ.jpg'
+            },
+            {
+                name: '18W Titan Deep Downlight',
+                category: 'Deep Downlight',
+                watts: '18W',
+                cutout: '120mm',
+                price: '₹699',
+                cct: '3000K',
+                body: 'Black/White',
+                code: 'VAL-TD18',
+                img: './asset/product/18W TITAN DEEP DOWNLIGHT.jpg'
+            },
+            {
+                name: '24W Dynamic Street Light',
+                category: 'Street Lights',
+                watts: '24W',
+                price: '₹1899',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL24D',
+                img: './asset/product/24W DYNAMIC STREET LIGHT.jpg'
+            },
+            {
+                name: '24W Sharp Street Light',
+                category: 'Street Lights',
+                watts: '24W',
+                price: '₹1799',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL24S',
+                img: './asset/product/24W SHARP STREET LIGHT.jpg'
+            },
+            {
+                name: '30W Crystal Track Light',
+                category: 'Track Lights',
+                watts: '30W',
+                price: '₹1499',
+                cct: '6500K',
+                body: 'Black',
+                code: 'VAL-CRY30',
+                img: './asset/product/30W CRYSTAL TRACK LIGHT (1).jpg'
+            },
+            {
+                name: '30W Smart Flood Light',
+                category: 'Flood Lights',
+                watts: '30W',
+                price: '₹1599',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-FL30S',
+                img: './asset/product/30W SMART FLOOD LIGHT.jpg'
+            },
+            {
+                name: '36W Sharp Street Light',
+                category: 'Street Lights',
+                watts: '36W',
+                price: '₹2599',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL36S',
+                img: './asset/product/36W SHARP STREET LIGHT.jpg'
+            },
+            {
+                name: '36W Titan Deep Downlight',
+                category: 'Deep Downlight',
+                watts: '36W',
+                cutout: '150mm',
+                price: '₹999',
+                cct: '3000K',
+                body: 'Black',
+                code: 'VAL-TD36',
+                img: './asset/product/36W TITAN DEEP DOWNLIGHT (1).jpg'
+            },
+            {
+                name: '50W Dynamic Street Light',
+                category: 'Street Lights',
+                watts: '50W',
+                price: '₹2999',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL50D',
+                img: './asset/product/50W DYNAMIC STREET LIGHT.jpg'
+            },
+            {
+                name: '50W Sharp Street Light',
+                category: 'Street Lights',
+                watts: '50W',
+                price: '₹2899',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL50S',
+                img: './asset/product/50W SHARP STREET LIGHT.jpg'
+            },
+            {
+                name: '50W Smart Flood Light',
+                category: 'Flood Lights',
+                watts: '50W',
+                price: '₹2299',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-FL50S',
+                img: './asset/product/50W SMART FLOOD LIGHT.jpg'
+            },
+            {
+                name: '100W Dynamic Street Light',
+                category: 'Street Lights',
+                watts: '100W',
+                price: '₹4999',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL100D',
+                img: './asset/product/100W DYNAMIC STREET LIGHT.jpg'
+            },
+            {
+                name: '100W Sharp Street Light',
+                category: 'Street Lights',
+                watts: '100W',
+                price: '₹4799',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-SL100S',
+                img: './asset/product/100W SHARP STREET LIGHT.jpg'
+            },
+            {
+                name: '100W Smart Flood Light',
+                category: 'Flood Lights',
+                watts: '100W',
+                price: '₹3999',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-FL100S',
+                img: './asset/product/100W SMART FLOOD LIGHT.jpg'
+            },
+            {
+                name: '150W Smart Flood Light',
+                category: 'Flood Lights',
+                watts: '150W',
+                price: '₹6499',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-FL150S',
+                img: './asset/product/150W SMART FLOOD LIGHT.jpg'
+            },
+            {
+                name: '200W Smart Flood Light',
+                category: 'Flood Lights',
+                watts: '200W',
+                price: '₹7999',
+                cct: '6500K',
+                body: 'Grey',
+                code: 'VAL-FL200S',
+                img: './asset/product/200W SMART FLOOD LIGHT.jpg'
+            }
         ];
-
         // ================== UTILITIES ==================
         const toast = document.getElementById('toast');
         const toastMsg = document.getElementById('toastMsg');
@@ -2225,7 +2569,7 @@
         }
 
         function renderProductCard(p, index) {
-            return `<div class="product-card"><div class="product-img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div><div class="product-content"><h3>${p.name}</h3><div class="product-specs">${p.watts} · ${p.cct || ''} · ${p.body}</div><div class="product-code">${p.code} ${p.cutout ? '| ' + p.cutout : ''}</div><div class="price">${p.price}</div><div class="product-actions"><button class="details-btn" data-index="${index}"><i class="fas fa-eye"></i> Details</button><button class="enquire-btn" data-index="${index}"><i class="fab fa-whatsapp"></i> Enquire</button></div></div></div>`;
+            return `<div class="product-card"><div class="product-img" data-product-index="${index}" title="View product"><img src="${p.img}" alt="${p.name}" loading="lazy"></div><div class="product-content"><h3>${p.name}</h3><div class="product-specs">${p.watts} · ${p.cct || ''} · ${p.body}</div><div class="product-code">${p.code} ${p.cutout ? '| ' + p.cutout : ''}</div><div class="price">${p.price}</div><div class="product-actions"><button class="details-btn" data-index="${index}"><i class="fas fa-eye"></i> Details</button><button class="enquire-btn" data-index="${index}"><i class="fab fa-whatsapp"></i> Enquire</button></div></div></div>`;
         }
 
         // ================== MODAL ==================
@@ -2249,6 +2593,15 @@
                 btn.removeEventListener('click', window.enquireHandler);
                 window.enquireHandler = (e) => { const idx = e.currentTarget.dataset.index; whatsAppEnquiry(products[idx]); };
                 btn.addEventListener('click', window.enquireHandler);
+            });
+            document.querySelectorAll('.product-img[data-product-index]').forEach(el => {
+                el.removeEventListener('click', window.imageHandler);
+                window.imageHandler = (e) => {
+                    const idx = e.currentTarget.dataset.productIndex;
+                    const product = products[idx];
+                    if (product) navigateToState({ page: 'product', productCode: product.code }, false);
+                };
+                el.addEventListener('click', window.imageHandler);
             });
         }
 
@@ -2275,21 +2628,159 @@
         document.getElementById('featuredProducts').innerHTML = featured.map((p, idx) => renderProductCard(p, products.indexOf(p))).join('');
         attachDetailListeners();
 
-        // ================== PAGE NAVIGATION ==================
+        // ================== ROUTES & NAVIGATION ==================
         const pages = ['home', 'products', 'about', 'applications', 'contact'];
+        const routeConfig = {
+            home: 'home-page',
+            products: 'products-page',
+            about: 'about-page',
+            applications: 'applications-page',
+            contact: 'contact-page',
+            product: 'product-detail-page'
+        };
+
+        const productDetailContent = document.getElementById('productDetailContent');
+        const pageBackBtn = document.getElementById('pageBackBtn');
+        const appHistory = [];
+
+        function hideAllPages() {
+            Object.values(routeConfig).forEach(id => document.getElementById(id).classList.remove('active-page'));
+        }
+
+        function setActiveNav(route) {
+            const activeRoute = route === 'product' ? 'products' : route;
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === activeRoute));
+        }
+
+        function parseRouteFromHash() {
+            const hash = window.location.hash.slice(1);
+            if (!hash) return { page: 'home' };
+            if (hash.startsWith('product-') || hash.startsWith('product/')) {
+                return { page: 'product', productCode: hash.replace(/^product[-\/]/, '') };
+            }
+            if (pages.includes(hash)) return { page: hash };
+            return { page: 'home' };
+        }
+
+        function buildProductDetailHtml(product, hasPrev, hasNext) {
+            return `
+                <div class="product-detail-card">
+                    <div>
+                        <img src="${product.img}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="product-detail-info">
+                        <h2>${product.name}</h2>
+                        <p class="product-code"><strong>Code:</strong> ${product.code}</p>
+                        <p class="product-detail-desc">${product.category} · ${product.watts} · ${product.cct || '—'} · ${product.body}</p>
+                        <div class="product-detail-specs">
+                            <div class="product-detail-spec"><strong>Category</strong><span>${product.category}</span></div>
+                            <div class="product-detail-spec"><strong>Wattage</strong><span>${product.watts}</span></div>
+                            <div class="product-detail-spec"><strong>CCT</strong><span>${product.cct || '—'}</span></div>
+                            <div class="product-detail-spec"><strong>Body</strong><span>${product.body}</span></div>
+                            <div class="product-detail-spec"><strong>Cutout</strong><span>${product.cutout || '—'}</span></div>
+                            <div class="product-detail-spec"><strong>Price</strong><span>${product.price}</span></div>
+                        </div>
+                        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="btn btn-primary" id="productDetailWaBtn"><i class="fab fa-whatsapp"></i> Enquire</button>
+                            <button class="btn btn-outline" id="productDetailBackUiBtn"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button class="btn btn-outline" id="productPrevBtn" ${hasPrev ? '' : 'disabled'}><i class="fas fa-chevron-left"></i> Prev</button>
+                            <button class="btn btn-outline" id="productNextBtn" ${hasNext ? '' : 'disabled'}>Next <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function showRoute(page, replace = false) {
+            const target = routeConfig[page] || routeConfig.home;
+            hideAllPages();
+            document.getElementById(target).classList.add('active-page');
+            setActiveNav(page);
+            if (replace) {
+                history.replaceState({ page }, '', `#${page}`);
+            } else {
+                history.pushState({ page }, '', `#${page}`);
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function getProductIndex(code) {
+            return products.findIndex(p => p.code === code);
+        }
+
+        function handlePageBack() {
+            if (appHistory.length > 1) {
+                window.history.back();
+                return;
+            }
+            showRoute('products', true);
+        }
+
+        function showProductDetailPage(code, replace = false) {
+            const index = getProductIndex(code);
+            if (index === -1) {
+                showRoute('products', replace);
+                return;
+            }
+            const product = products[index];
+            hideAllPages();
+            document.getElementById(routeConfig.product).classList.add('active-page');
+            setActiveNav('product');
+            productDetailContent.innerHTML = buildProductDetailHtml(product, index > 0, index < products.length - 1);
+            document.getElementById('productDetailWaBtn').addEventListener('click', () => whatsAppEnquiry(product));
+            document.getElementById('productDetailBackUiBtn').addEventListener('click', handlePageBack);
+            const prevBtn = document.getElementById('productPrevBtn');
+            const nextBtn = document.getElementById('productNextBtn');
+            if (prevBtn && index > 0) {
+                prevBtn.addEventListener('click', () => navigateToState({ page: 'product', productCode: products[index - 1].code }, false));
+            }
+            if (nextBtn && index < products.length - 1) {
+                nextBtn.addEventListener('click', () => navigateToState({ page: 'product', productCode: products[index + 1].code }, false));
+            }
+            if (replace) {
+                history.replaceState({ page: 'product', productCode: code }, '', `#product-${code}`);
+            } else {
+                history.pushState({ page: 'product', productCode: code }, '', `#product-${code}`);
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToState(state, replace = false) {
+            const resolved = state || parseRouteFromHash();
+            if (replace) {
+                if (appHistory.length) {
+                    appHistory[appHistory.length - 1] = resolved;
+                } else {
+                    appHistory.push(resolved);
+                }
+            } else {
+                appHistory.push(resolved);
+            }
+            if (resolved.page === 'product') {
+                showProductDetailPage(resolved.productCode, replace);
+                return;
+            }
+            showRoute(resolved.page, replace);
+        }
+
         document.querySelectorAll('[data-page]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 const page = link.dataset.page;
-                pages.forEach(p => document.getElementById(p + '-page').classList.remove('active-page'));
-                document.getElementById(page + '-page').classList.add('active-page');
-                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-                link.classList.add('active');
-                window.scrollTo(0, 0);
+                navigateToState({ page }, false);
                 document.getElementById('navLinks').classList.remove('mobile-open');
                 document.getElementById('menuIcon').className = 'fas fa-bars';
             });
         });
+
+        pageBackBtn.addEventListener('click', handlePageBack);
+
+        window.addEventListener('popstate', event => {
+            const state = event.state || parseRouteFromHash();
+            navigateToState(state, true);
+        });
+
+        const initialRoute = window.history.state || parseRouteFromHash();
+        navigateToState(initialRoute, true);
 
         // ================== MOBILE MENU TOGGLE ==================
         const mobileBtn = document.getElementById('mobileMenuBtn');
