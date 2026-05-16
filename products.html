@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valor LED Products</title>
+  <meta name="description" content="Explore Valor LED panel lights, COB spotlights, flood lights, street lights, track lights and downlights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-page inner-page products-page">
+  <header class="site-header home-header">
+    <div class="top-social-bar">
+      <div class="top-social-inner">
+        <div class="top-contact">
+          <a href="tel:+919727396827"><span class="material-symbols-rounded">call</span>+91 97273 96827</a>
+          <a href="mailto:sales@valortechnology.in"><span class="material-symbols-rounded">mail</span>sales@valortechnology.in</a>
+        </div>
+        <div class="top-socials" aria-label="Social links">
+          <a href="#" aria-label="Instagram" title="Instagram"><span class="material-symbols-rounded">photo_camera</span></a>
+          <a href="#" aria-label="Facebook" title="Facebook"><span class="material-symbols-rounded">thumb_up</span></a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn"><span class="material-symbols-rounded">work</span></a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav home-nav" aria-label="Main navigation">
+      <a class="brand home-mobile-brand" href="led-web.html"><img src="asset/valor-logo.svg" alt="Valor Technology logo"></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><span></span><span></span><span></span></button>
+      <div class="nav-links home-nav-links" data-menu>
+        <a href="led-web.html">Home</a>
+        <a class="active" href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="inner-hero">
+      <div class="wrap inner-hero-grid">
+        <div>
+          <p class="kicker">Engineering products</p>
+          <h1>All products</h1>
+          <p>Explore Valor lighting fixtures engineered for efficiency, durability and visual comfort. Filter by category or sort the catalogue to move faster.</p>
+        </div>
+        <div class="product-tools">
+          <span><i class="material-symbols-rounded">inventory_2</i><b id="productCount">12</b> products found</span>
+          <label><i class="material-symbols-rounded">sort</i><select id="sortProducts"><option value="featured">Featured</option><option value="az">A-Z</option><option value="watt">Low watt first</option></select></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-catalog">
+      <div class="wrap product-layout">
+        <aside class="filter-panel">
+          <div class="filter-title">
+            <span class="material-symbols-rounded">tune</span>
+            <h2>Filters</h2>
+            <button type="button" id="resetFilters"><span class="material-symbols-rounded">restart_alt</span>Reset</button>
+          </div>
+          <div class="filter-group">
+            <h3>Category</h3>
+            <button class="chip-filter active" data-filter="all" type="button">All</button>
+            <button class="chip-filter" data-filter="Panel Light" type="button">Panel Light</button>
+            <button class="chip-filter" data-filter="COB Light" type="button">COB Light</button>
+            <button class="chip-filter" data-filter="Downlight" type="button">Downlight</button>
+            <button class="chip-filter" data-filter="Track Light" type="button">Track Light</button>
+            <button class="chip-filter" data-filter="Flood Light" type="button">Flood Light</button>
+            <button class="chip-filter" data-filter="Street Light" type="button">Street Light</button>
+          </div>
+          <div class="filter-group">
+            <h3>Need help?</h3>
+            <p>Send a product list or site requirement. We will shortlist wattage and fixture options.</p>
+            <a class="mini-link" href="contact.html">Request quote <span class="material-symbols-rounded">arrow_forward</span></a>
+          </div>
+        </aside>
+
+        <div class="product-results" id="productGrid">
+          <article class="premium-product-card catalog-card" data-category="Panel Light" data-name="Vivid Backlit Panel" data-watt="15">
+            <a class="corner-action" href="contact.html?product=Vivid%20Backlit%20Panel" aria-label="Ask about Vivid Backlit Panel"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/15W VIVID BACKLIT PANEL RD.jpg" alt="Vivid round panel light">
+            <div class="premium-product-body"><p>Panel Light</p><h3>Vivid Backlit Panel</h3><div class="product-chips"><span>15W</span><span>Round</span><span>3 CCT</span></div><a href="contact.html?product=Vivid%20Backlit%20Panel">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Panel Light" data-name="Sleek Panel Square" data-watt="18">
+            <a class="corner-action" href="contact.html?product=Sleek%20Panel%20Square" aria-label="Ask about Sleek Panel Square"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/18&22W SLEEK PANEL SQ.jpg" alt="Sleek square panel light">
+            <div class="premium-product-body"><p>Panel Light</p><h3>Sleek Panel Square</h3><div class="product-chips"><span>18-22W</span><span>Square</span><span>4 CCT</span></div><a href="contact.html?product=Sleek%20Panel%20Square">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="COB Light" data-name="Next Gen COB Spotlight" data-watt="7">
+            <a class="corner-action" href="contact.html?product=Next%20Gen%20COB%20Spotlight" aria-label="Ask about Next Gen COB Spotlight"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/7W NEXT GEN COB SPOTLIGHT.jpg" alt="Next Gen COB spotlight">
+            <div class="premium-product-body"><p>COB Light</p><h3>Next Gen COB Spotlight</h3><div class="product-chips"><span>7-12W</span><span>Round</span><span>Accent</span></div><a href="contact.html?product=Next%20Gen%20COB%20Spotlight">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="COB Light" data-name="Crysta Cylinder Spotlight" data-watt="12">
+            <a class="corner-action" href="contact.html?product=Crysta%20Cylinder%20Spotlight" aria-label="Ask about Crysta Cylinder Spotlight"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/12W CRYSTA CYLINDER SPOTLIGHT.jpg" alt="Crysta cylinder spotlight">
+            <div class="premium-product-body"><p>COB Light</p><h3>Crysta Cylinder Spotlight</h3><div class="product-chips"><span>12W</span><span>Cylinder</span><span>Premium</span></div><a href="contact.html?product=Crysta%20Cylinder%20Spotlight">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Downlight" data-name="Titan Deep Downlight" data-watt="18">
+            <a class="corner-action" href="contact.html?product=Titan%20Deep%20Downlight" aria-label="Ask about Titan Deep Downlight"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/36W TITAN DEEP DOWNLIGHT (1).jpg" alt="Titan deep downlight">
+            <div class="premium-product-body"><p>Downlight</p><h3>Titan Deep Downlight</h3><div class="product-chips"><span>18-36W</span><span>Deep</span><span>4 CCT</span></div><a href="contact.html?product=Titan%20Deep%20Downlight">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Track Light" data-name="Crystal Track Light" data-watt="10">
+            <a class="corner-action" href="contact.html?product=Crystal%20Track%20Light" aria-label="Ask about Crystal Track Light"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/30W CRYSTAL TRACK LIGHT (1).jpg" alt="Crystal track light">
+            <div class="premium-product-body"><p>Track Light</p><h3>Crystal Track Light</h3><div class="product-chips"><span>10-30W</span><span>Adjustable</span><span>Retail</span></div><a href="contact.html?product=Crystal%20Track%20Light">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Flood Light" data-name="Smart Flood Light" data-watt="50">
+            <a class="corner-action" href="contact.html?product=Smart%20Flood%20Light" aria-label="Ask about Smart Flood Light"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/100W SMART FLOOD LIGHT.jpg" alt="Smart flood light">
+            <div class="premium-product-body"><p>Flood Light</p><h3>Smart Flood Light</h3><div class="product-chips"><span>50-200W</span><span>Outdoor</span><span>Area</span></div><a href="contact.html?product=Smart%20Flood%20Light">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Street Light" data-name="Sharp Street Light" data-watt="50">
+            <a class="corner-action" href="contact.html?product=Sharp%20Street%20Light" aria-label="Ask about Sharp Street Light"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/100W SHARP STREET LIGHT.jpg" alt="Sharp street light">
+            <div class="premium-product-body"><p>Street Light</p><h3>Sharp Street Light</h3><div class="product-chips"><span>50-100W</span><span>Outdoor</span><span>6KV</span></div><a href="contact.html?product=Sharp%20Street%20Light">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+          <article class="premium-product-card catalog-card" data-category="Street Light" data-name="Dynamic Street Light" data-watt="24">
+            <a class="corner-action" href="contact.html?product=Dynamic%20Street%20Light" aria-label="Ask about Dynamic Street Light"><span class="material-symbols-rounded">north_east</span></a>
+            <img src="asset/product/50W DYNAMIC STREET LIGHT.jpg" alt="Dynamic street light">
+            <div class="premium-product-body"><p>Street Light</p><h3>Dynamic Street Light</h3><div class="product-chips"><span>24-100W</span><span>Road</span><span>Efficient</span></div><a href="contact.html?product=Dynamic%20Street%20Light">View Details <span class="material-symbols-rounded">arrow_forward</span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="support-band">
+      <div>
+        <p class="kicker">Support</p>
+        <h2>Need a product list or technical help?</h2>
+        <p>Share your quantity, wattage and application. We will guide you to the right Valor range.</p>
+        <div class="showcase-actions center"><a class="pill-btn" href="contact.html">Request Product List <span class="material-symbols-rounded">send</span></a><a class="pill-btn ghost" href="contact.html">Technical Support</a></div>
+      </div>
+      <span class="material-symbols-rounded support-mark">open_in_new</span>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-footer-grid">
+      <div><img class="footer-logo" src="asset/valor-logo.svg" alt="Valor Technology logo"><p>Precision LED lighting for homes, offices, showrooms, streets and commercial projects.</p></div>
+      <div><h4>Navigate</h4><a href="led-web.html">Home</a><a href="products.html">Products</a><a href="about.html">About Brand</a><a href="contact.html">Project Inquiry</a></div>
+      <div><h4>Collections</h4><a href="products.html">Panel Light</a><a href="products.html">Downlight</a><a href="products.html">COB Ceiling Light</a><a href="products.html">Flood Light</a><a href="products.html">Street Light</a></div>
+      <div><h4>Headquarters</h4><p>Bhiwandi, Maharashtra, India</p><p><a href="mailto:sales@valortechnology.in">sales@valortechnology.in</a></p><p><a href="tel:+919727396827">+91 97273 96827</a></p></div>
+    </div>
+    <div class="home-copyright">© 2026 Valor Technology · Architectural LED Solutions</div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('[data-menu-toggle]');
+    const menu = document.querySelector('[data-menu]');
+    toggle.addEventListener('click', () => document.body.classList.toggle('menu-open'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => document.body.classList.remove('menu-open')));
+
+    const buttons = [...document.querySelectorAll('.chip-filter')];
+    const cards = [...document.querySelectorAll('.catalog-card')];
+    const count = document.querySelector('#productCount');
+    const sort = document.querySelector('#sortProducts');
+    const grid = document.querySelector('#productGrid');
+    let activeFilter = 'all';
+
+    function renderProducts() {
+      const sorted = [...cards].sort((a, b) => {
+        if (sort.value === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+        if (sort.value === 'watt') return Number(a.dataset.watt) - Number(b.dataset.watt);
+        return cards.indexOf(a) - cards.indexOf(b);
+      });
+      sorted.forEach(card => grid.appendChild(card));
+      let visible = 0;
+      cards.forEach(card => {
+        const show = activeFilter === 'all' || card.dataset.category === activeFilter;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      count.textContent = visible;
+    }
+
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      activeFilter = button.dataset.filter;
+      renderProducts();
+    }));
+    sort.addEventListener('change', renderProducts);
+    document.querySelector('#resetFilters').addEventListener('click', () => {
+      activeFilter = 'all';
+      sort.value = 'featured';
+      buttons.forEach(item => item.classList.toggle('active', item.dataset.filter === 'all'));
+      renderProducts();
+    });
+    const requestedCategory = new URLSearchParams(window.location.search).get('category');
+    if (requestedCategory) {
+      const selected = buttons.find(button => button.dataset.filter === requestedCategory);
+      if (selected) {
+        buttons.forEach(item => item.classList.remove('active'));
+        selected.classList.add('active');
+        activeFilter = requestedCategory;
+      }
+    }
+    renderProducts();
+  </script>
+</body>
+</html>
